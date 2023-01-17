@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
 import { getContacts, getFilterValue } from 'redux/selectors';
 import { deleteContact } from 'redux/operations';
 import PropTypes from 'prop-types';
@@ -32,7 +31,7 @@ export default function ContactList() {
     <>
       {items.length > 0 && (
         <FilteredList>
-          {filteredContactsList.map(({ id, name, number }) => {
+          {items.map(({ id, name, number }) => {
             return (
               <FilteredListItem key={id}>
                 <p>
