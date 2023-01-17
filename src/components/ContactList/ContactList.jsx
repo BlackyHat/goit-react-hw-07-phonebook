@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import { getContacts, getFilterValue } from 'redux/selectors';
-
-import { deleteContacts } from 'redux/contactsSlice';
+import { deleteContact } from 'redux/operations';
 import PropTypes from 'prop-types';
 
 import { BsTelephoneForward, BsPersonX } from 'react-icons/bs';
@@ -13,37 +13,41 @@ import {
 
 export default function ContactList() {
   const dispatch = useDispatch();
-  const { contacts } = useSelector(getContacts);
+  const items = useSelector(getContacts);
   const filter = useSelector(getFilterValue);
 
   const onDeleteContact = delContactId => {
-    dispatch(deleteContacts(delContactId));
+    dispatch(deleteContact(delContactId));
   };
+
   const getFilteredContacts = () => {
     const normaliziedFilter = filter.toLowerCase();
-    return contacts?.filter(({ name }) =>
+    return items.filter(({ name }) =>
       name.toLowerCase().includes(normaliziedFilter)
     );
   };
 
   const filteredContactsList = getFilteredContacts();
-
   return (
-    <FilteredList>
-      {filteredContactsList.map(({ id, name, number }) => {
-        return (
-          <FilteredListItem key={id}>
-            <p>
-              <BsTelephoneForward />
-              {name + ': ' + number}{' '}
-            </p>
-            <DeleteBtn type="button" onClick={() => onDeleteContact(id)}>
-              delete <BsPersonX size={14} />
-            </DeleteBtn>
-          </FilteredListItem>
-        );
-      })}
-    </FilteredList>
+    <>
+      {items.length > 0 && (
+        <FilteredList>
+          {filteredContactsList.map(({ id, name, number }) => {
+            return (
+              <FilteredListItem key={id}>
+                <p>
+                  <BsTelephoneForward />
+                  {name + ': ' + number}{' '}
+                </p>
+                <DeleteBtn type="button" onClick={() => onDeleteContact(id)}>
+                  delete <BsPersonX size={14} />
+                </DeleteBtn>
+              </FilteredListItem>
+            );
+          })}
+        </FilteredList>
+      )}
+    </>
   );
 }
 

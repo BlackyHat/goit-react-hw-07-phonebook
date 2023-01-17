@@ -13,6 +13,12 @@ export const FilteredListItem = styled.li`
   align-items: center;
   padding: 4px;
 
+  & img {
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+  }
+
   & p {
     margin: 0;
     display: flex;

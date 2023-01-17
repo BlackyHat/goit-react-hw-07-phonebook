@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 export const SectionItem = styled.section`
   width: 360px;
   text-align: center;
-  margin-left: 8px;
+  margin: 0 auto;
 `;
 
 export const SectionTitle = styled.h2`
