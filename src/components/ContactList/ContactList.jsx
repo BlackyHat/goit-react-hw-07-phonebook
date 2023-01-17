@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
 import { getContacts, getFilterValue } from 'redux/selectors';
 import { deleteContact } from 'redux/operations';
 import PropTypes from 'prop-types';
