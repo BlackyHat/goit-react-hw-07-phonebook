@@ -44,30 +44,4 @@ const contactsSlice = createSlice({
     },
   },
 });
-// addContacts: {
-//       reducer(state, action) {
-// state.contacts.push(action.payload);
-//       },
-//       prepare(data) {
-//         return {
-//           payload: {
-//             id: nanoid(),
-//             ...data,
-//           },
-//         };
-//       },
-//     },
-//     deleteContacts: {
-//       reducer(state, action) {
-//         const index = state.contacts.findIndex(
-//           contact => contact.id === action.payload
-//         );
-//         state.contacts.splice(index, 1);
-//       },
-//     },
-//   },
-// });
-
-// export const { fetchingInProgress, fetchingSuccess, fetchingError } =
-//   contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;
